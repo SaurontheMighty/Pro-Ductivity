@@ -1,10 +1,12 @@
-var x = document.getElementById("myNumber").value;
+var x = document.getElementById("textBox").value;
 function startTimer(){
-    var nowDate=new Date();
-    var now=(nowDate.getTime());
-    var end=(nowDate.getTime())+x*60000;
-    var y = end-now;
-    document.getElementById("timeLeft").innerHTML = y;
+    var start=Date.now();
+    var elapsed = (Date.now() - start)/60000;//time elapsed in minutes
+    var y = x;
+    if(elapsed>=x){
+    	y= x-elapsed;
+    	document.getElementById("timeLeft").innerHTML = y;
+    }
 }
 function stopTimer(){
 
