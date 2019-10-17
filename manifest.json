@@ -13,12 +13,6 @@
     "permissions": [
       "activeTab"
     ],
-
-    "content_scripts": [
-      {
-        "js": ["pro.js"]
-      }
-    ],
   
     "browser_action": {
       "default_icon": "icons/border-48.png",
