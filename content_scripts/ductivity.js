@@ -27,10 +27,10 @@
     }
 
     browser.runtime.onMessage.addListener((message) => {
-      if (message.command === "beastify") {
-        insertBeast(message.beastURL);
+      if (message.command === "ductify") {
+        ductivity();
       } else if (message.command === "reset") {
-        removeExistingBeasts();
+        reset();
       }
     });
   }

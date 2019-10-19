@@ -1,21 +1,23 @@
 function listenForClicks() {
   document.addEventListener("click", (e) => {
-  function ductivity(){
-    var start=Date.now();  
-    var interval = setInterval(function() {
-    var x = document.getElementById("textBox").value;
-    var elapsed = (Date.now() - start)/60000;//time elapsed in minutes
-    var y = Math.round(x - elapsed)
-    if(y>=0){
-      document.getElementById("timeLeft").innerHTML = y;
+    function ductify(tabs) {
+      browser.tabs.sendMessage(tabs[0].id, {
+        command: "ductify",
+        beastURL: url
+      });
     }
-    else{
-        document.getElementById("timeLeft").innerHTML = "TIMES UP";
-    }
-  },1000);
-  }
   function reportError(error) {
     console.error(`Cannot perform actions on Priveleged Pages: ${error}`);
+  }
+  if (e.target.classList.contains("set")) {
+    browser.tabs.query({active: true, currentWindow: true})
+      .then(ductify)
+      .catch(reportError);
+  }
+  else if (e.target.classList.contains("reset")) {
+    browser.tabs.query({active: true, currentWindow: true})
+      .then(reset)
+      .catch(reportError);
   }
 })
 }
