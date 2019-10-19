@@ -2,7 +2,7 @@ function listenForClicks() {
   document.addEventListener("click", (e) => {
     function ductify(tabs) {
       browser.tabs.sendMessage(tabs[0].id, {
-        command: "ductify",
+        command: "set",
       });
     }
     function reportError(error) {
