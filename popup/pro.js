@@ -9,6 +9,11 @@ function listenForClicks() {
   function reportError(error) {
     console.error(`Cannot perform actions on Priveleged Pages: ${error}`);
   }
+  function reset(tabs) {
+    browser.tabs.sendMessage(tabs[0].id, {
+      command: "reset",
+    });
+  }
   if (e.target.classList.contains("set")) {
     browser.tabs.query({active: true, currentWindow: true})
       .then(ductify)
@@ -21,6 +26,12 @@ function listenForClicks() {
   }
 })
 }
+function reportExecuteScriptError(error) {
+  document.querySelector("#popup-content").classList.add("hidden");
+  document.querySelector("#error-content").classList.remove("hidden");
+  console.error(`Failed to execute beastify content script: ${error.message}`);
+}
+
 browser.tabs.executeScript({file: "/content_scripts/ductivity.js"})
 .then(listenForClicks)
 .catch(reportExecuteScriptError);
