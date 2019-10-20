@@ -9,7 +9,8 @@
     }
     window.hasRun = true;
 
-    function ductivityPro(x){
+    function ductivityPro(){
+      var x = document.getElementById("textBox").value;
       var start=Date.now();  
       var interval = setInterval(function() {
       var elapsed = (Date.now() - start)/60000;//time elapsed in minutes
@@ -32,10 +33,9 @@
     }
     browser.runtime.onMessage.addListener((message) => {
       if (message.command === "set") {
-        ductivityPro(message.x);
+        ductivityPro();
       } else if (message.command === "reset") {
         reset();
       }
     });
-  }
-)
+})();

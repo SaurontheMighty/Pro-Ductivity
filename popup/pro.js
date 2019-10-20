@@ -33,6 +33,6 @@ function reportExecuteScriptError(error) {
   console.error(`Failed to execute content script: ${error.message}`);
 }
 
-browser.tabs.executeScript({file: "/content_scripts/ductivity.js"})
+browser.tabs.executeScript({file: "/content_scripts/productivity.js"})
 .then(listenForClicks)
 .catch(reportExecuteScriptError);
