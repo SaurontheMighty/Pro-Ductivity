@@ -9,10 +9,9 @@
     }
     window.hasRun = true;
 
-    function ductivity(){
+    function ductivityPro(x){
       var start=Date.now();  
       var interval = setInterval(function() {
-      var x = document.getElementById("textBox").value;
       var elapsed = (Date.now() - start)/60000;//time elapsed in minutes
       var y = Math.round(x - elapsed)
       if(y>=0){
@@ -25,10 +24,15 @@
       }
     },1000);
     }
-
+    function reset(){
+      x=0;
+      y=0;
+      elapsed=0;
+      document.getElementById("timeLeft").innerHTML = y;
+    }
     browser.runtime.onMessage.addListener((message) => {
-      if (message.command === "ductify") {
-        ductivity();
+      if (message.command === "set") {
+        ductivityPro(message.x);
       } else if (message.command === "reset") {
         reset();
       }
