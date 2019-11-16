@@ -7,4 +7,4 @@ What it does now:
 When you click set timer it warps the page. 
 
 
-I hope to finish it soon but it's my first Firefox extension project so it may take a while.
+I hope to finish it soon but it's my first Firefox extension project so I'm still learning about the intricacies.
