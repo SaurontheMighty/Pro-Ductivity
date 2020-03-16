@@ -4,15 +4,17 @@ var timeLeft = document.querySelector("#timeLeft");
 function listenForClicks() {
   document.addEventListener("click", (e) => {
 
-    function time(tabs) {
+    function time(tabs, timeSet) {
       browser.tabs.sendMessage(tabs[0].id, {
         command: "timer",
         time: timeSet
         });
     }
+
     function reportError(error) {
       console.error(`Cannot perform actions on Priveleged Pages: ${error}`);
     }
+
     if (e.target.classList.contains("set")) {
       browser.tabs.query({active: true, currentWindow: true})
         .then(time)
@@ -26,6 +28,6 @@ function reportExecuteScriptError(error) {
   console.error(`Failed to execute content script: ${error.message}`);
 }
 
-browser.tabs.executeScript({file: "/content_scripts/productivity.js"})
+browser.tabs.executeScript({file: "/productivity.js"})
 .then(listenForClicks)
 .catch(reportExecuteScriptError);
