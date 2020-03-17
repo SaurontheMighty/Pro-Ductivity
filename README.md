@@ -9,3 +9,6 @@ Built with JavaScript, HTML and CSS
 
 ### The Process
 I wanted to control the amount of time I spend on youtube and other websites so I built this extension. It took a lot of effort and quite a while to learn how to build an extension for firefox becuase there are hardly any tutorials. I taught myself how to do it by looking at the example extensions on mdn's github page.
+
+### Next Steps
+I need an intermediary JavaScript file so that even if you close the popup on the toolbar the alarm will still work.
