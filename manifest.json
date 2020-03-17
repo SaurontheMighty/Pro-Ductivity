@@ -1,25 +1,29 @@
 {
 
-    "manifest_version": 2,
-    "name": "DuctivityPro",
-    "version": "1.0",
-  
-    "description": "Improves Productivity",
-    "homepage_url": "https://github.com/sauronthemighty",
-    "icons": {
+  "description": "A productivity addon",
+  "manifest_version": 2,
+  "name": "PROductivity",
+  "version": "1.0",
+  "homepage_url": "https://github.com/sauronthemighty/pro-ductivity",
+  "icons": {
+    "48": "icons/icon48.png",
+    "84": "icons/icon.png",
+    "96": "icons/icon96.png"
+  },
+
+  "permissions": [
+    "activeTab",
+    "alarms",
+    "notifications"
+  ],
+
+  "browser_action": {
+    "default_icon": {
       "48": "icons/icon48.png",
       "64": "icons/icon.png",
       "96": "icons/icon96.png"
     },
-  
-    "permissions": [
-      "activeTab"
-    ],
-  
-    "browser_action": {
-      "default_icon": "icons/border-48.png",
-      "default_title": "ProDuctivity",
-      "default_popup": "popup/pro.html"
-    }
-  
+    "default_title": "ProDuctivity",
+    "default_popup": "popup/pro.html"
   }
+}
