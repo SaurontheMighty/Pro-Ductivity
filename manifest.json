@@ -25,5 +25,10 @@
     },
     "default_title": "ProDuctivity",
     "default_popup": "popup/pro.html"
+  },
+
+  "background": {
+    "scripts": ["other.js"]
   }
+
 }

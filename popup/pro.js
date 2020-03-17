@@ -7,19 +7,10 @@ function listenForClicks() {
         "title": "Alarm created",
         "message": `Alarm created`
       });
-      browser.alarms.clearAll();
-      browser.alarms.create("", {delayInMinutes: 1200});
-      browser.alarms.onAlarm.addListener((alarm) => {
-        var gettingActiveTab = browser.tabs.query({active: true, currentWindow: true});
-        gettingActiveTab.then((tabs) => {
-          browser.tabs.sendMessage(tabs[0].id, {
-            command: "ring"
-          })
-        });
-      });
+      var page = browser.extension.getBackgroundPage();
+      page.restartAlarm(tabs);
     }
 
-    
     /**
      * Just log the error to the console.
      */
@@ -34,7 +25,6 @@ function listenForClicks() {
     }
   });
 }
-
 
 function reportExecuteScriptError(error) {
   document.querySelector("#popup-content").classList.add("hidden");
