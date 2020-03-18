@@ -14,11 +14,8 @@ function listenForClicks() {
       page.restartAlarm(tabs[0].id, DELAY);
     }
 
-    /**
-     * Just log the error to the console.
-     */
     function reportError(error) {
-      console.error(`Could not beastify: ${error}`);
+      console.error(`Could not perform actions on this page: ${error}`);
     }
 
     if (e.target.classList.contains("timer")) {
@@ -32,7 +29,7 @@ function listenForClicks() {
 function reportExecuteScriptError(error) {
   document.querySelector("#popup-content").classList.add("hidden");
   document.querySelector("#error-content").classList.remove("hidden");
-  console.error(`Failed to execute beastify content script: ${error.message}`);
+  console.error(`Failed to execute content script: ${error.message}`);
 }
 
 browser.tabs.executeScript({file: "/content_scripts/ringring.js"})
