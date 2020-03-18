@@ -2,7 +2,7 @@
 
   "description": "A productivity addon",
   "manifest_version": 2,
-  "name": "PROductivity",
+  "name": "ductivityPRO",
   "version": "1.0",
   "homepage_url": "https://github.com/sauronthemighty/pro-ductivity",
   "icons": {
@@ -28,7 +28,7 @@
   },
 
   "background": {
-    "scripts": ["other.js"]
+    "scripts": ["timer.js"]
   }
 
 }

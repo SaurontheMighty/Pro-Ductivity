@@ -5,7 +5,7 @@ Built with JavaScript, HTML and CSS.
 
 ### The Extension
 Consists of:
-- A background script "other.js"
+- A background script "timer.js"
 - A content script "ringring.js"
 - A popup
   - The HTML of the popup "pro.html"
@@ -13,7 +13,7 @@ Consists of:
   - The JavaScript of the popup "pro.js"
   
 ### How it works
-When you click "Set Timer" the extension injects ringring.js into the page and passes the time you've set to other.js. Other.js runs the timer and when the times up it sends a message to ringring asking it to warp the page.
+When you click "Set Timer" the extension injects ringring.js into the page and passes the time you've set to timer.js. Timer.js runs the timer and when the times up it sends a message to ringring asking it to warp the page.
 
 ### Challenges
 Building an extension for Firefox was challenging because I found that there were very few tutorials on how to build extensions for Firefox. This was also my first extension which definitely made it more challenging. It took a lot of time to build this especially because I had to learn how to build extensions on my own with no tutorials.
