@@ -1,3 +1,5 @@
+var inputtext = document.querySelector("#textBox");
+
 function listenForClicks() {
   document.addEventListener("click", (e) => {
 
@@ -5,10 +7,11 @@ function listenForClicks() {
       browser.notifications.create({
         "type": "basic",
         "title": "Alarm created",
-        "message": `Alarm created`
+        "message": `Alarm created, ${inputtext.value} minute`
       });
       var page = browser.extension.getBackgroundPage();
-      page.restartAlarm(tabs);
+      var DELAY = inputtext.value;
+      page.restartAlarm(tabs[0].id, DELAY);
     }
 
     /**

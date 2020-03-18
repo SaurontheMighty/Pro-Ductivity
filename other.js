@@ -1,16 +1,17 @@
 
-function restartAlarm(tabs) {
-    tabId = tabs[0].id;
-    browser.notifications.create({
-        "type": "basic",
-        "title": "Alarm Actually Created",
-        "message": `Alarm created`
-      });
+function restartAlarm(tabId, DELAY) {
     browser.alarms.clearAll();
     var gettingTab = browser.tabs.get(tabId);
+    const x = parseInt(DELAY, 10);
     gettingTab.then((tab) => {
-        browser.alarms.create("", {delayInMinutes: 0.1});
+        browser.notifications.create({
+            "type": "basic",
+            "title": "Alarm Actually Created",
+            "message": `Alarm created, ${x} minute`
+          });
+        browser.alarms.create("Timer", {delayInMinutes: x});
     });
+    
     browser.alarms.onAlarm.addListener((alarm) => {
         browser.notifications.create({
             "type": "basic",
