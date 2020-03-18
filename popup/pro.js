@@ -9,6 +9,7 @@ function listenForClicks() {
         "title": "Alarm created",
         "message": `Alarm created, ${inputtext.value} minute`
       });
+      document.querySelector("#confirmation").classList.remove("hidden");
       var page = browser.extension.getBackgroundPage();
       var DELAY = inputtext.value;
       page.restartAlarm(tabs[0].id, DELAY);
