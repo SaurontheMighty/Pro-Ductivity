@@ -1,5 +1,19 @@
 # Pro-Ductivity
 A productivity addon for Firefox.
+Once you install the extension in your browser, you'll notice it's icon in the toolbar. On clicking this, it opens a small window where you can set the time that you want to spend on the tab. Once this time is over,  the extension notifies you, tilts the page and effectively prevents you from spending further time on it.
 Built with JavaScript, HTML and CSS
-Goal: A working extension that allows you to input the time you want to stay on the tab and forces you to close the tab when the time set is over.
-WIP
+
+### The Extension
+Consists of:
+- A background script "other.js"
+- A content script "ringring.js"
+- A popup
+  - The HTML of the popup "pro.html"
+  - The CSS of the popup "pro.css"
+  - The JavaScript of the popup "pro.js"
+  
+### Challenges
+Building an extension for Firefox was challenging because I found that there were very few tutorials on how to build extensions. This was also my first extension which definitely made it more challenging.
+
+### The Road Ahead
+I plan on putting it on https://addons.mozilla.org/ and making a version for Chrome.
