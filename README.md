@@ -16,7 +16,7 @@ Consists of:
 When you click "Set Timer" the extension injects ringring.js into the page and passes the time you've set to timer.js. Timer.js runs the timer and when the times up it sends a message to ringring asking it to warp the page.
 
 ### Challenges
-Building an extension for Firefox was challenging because I found that there were very few tutorials on how to build extensions for Firefox. This was also my first extension which definitely made it more challenging. 
+Building an extension for Firefox was challenging because I found that there were very few tutorials on how to build extensions for Firefox. 
  
 ### The Road Ahead
 I plan on putting it on https://addons.mozilla.org/ and making a version for Chrome.
