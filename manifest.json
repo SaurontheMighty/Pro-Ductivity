@@ -3,7 +3,7 @@
   "description": "A productivity addon",
   "manifest_version": 2,
   "name": "ductivityPRO",
-  "version": "1.0",
+  "version": "2.0.1",
   "homepage_url": "https://github.com/sauronthemighty/pro-ductivity",
   "icons": {
     "48": "icons/icon48.png",
@@ -29,6 +29,13 @@
 
   "background": {
     "scripts": ["timer.js"]
-  }
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["/content_scripts/ringring.js"]
+    }
+  ]
 
 }

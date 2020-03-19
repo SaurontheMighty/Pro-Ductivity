@@ -13,6 +13,7 @@ function listenForClicks() {
       var page = browser.extension.getBackgroundPage();
       var DELAY = inputtext.value;
       page.restartAlarm(tabs[0].id, DELAY);
+      
     }
 
     function reportError(error) {
