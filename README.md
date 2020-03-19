@@ -13,7 +13,7 @@ Consists of:
   - The JavaScript of the popup "pro.js"
   
 ### How it works
-When you click "Set Timer" the extension injects ringring.js into the page and passes the time you've set to timer.js. Timer.js runs the timer and when the times up it sends a message to ringring asking it to warp the page.
+When you click "Set Timer" the extension calls a function in the background script "timer.js" and passes the time set by the user into it. Once this time is up timer.js sends a message to the content script "ringring.js" and asks it to warp the page.
 
 ### Challenges
 Building an extension for Firefox was challenging because I found that there were very few tutorials on how to build extensions for Firefox. 
