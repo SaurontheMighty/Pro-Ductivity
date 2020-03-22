@@ -4,15 +4,24 @@ function listenForClicks() {
   document.addEventListener("click", (e) => {
 
     function timer(tabs) {
-      browser.notifications.create({
-        "type": "basic",
-        "title": "Alarm created",
-        "message": `Alarm created, ${inputtext.value} minute`
-      });
-      document.querySelector("#confirmation").classList.remove("hidden");
       var page = browser.extension.getBackgroundPage();
-      var DELAY = inputtext.value;
-      page.restartAlarm(tabs[0].id, DELAY);
+      if(0<=parseInt(inputtext.value, 10) && parseInt(inputtext.value, 10)<=60){
+        browser.notifications.create({
+          "type": "basic",
+          "title": "Alarm created",
+          "message": `Alarm created, ${inputtext.value} minute`
+        });
+        document.querySelector("#confirmation").classList.remove("hidden");
+        var DELAY = inputtext.value;
+        page.restartAlarm(tabs[0].id, DELAY);
+
+      } else{
+        browser.notifications.create({
+          "type": "basic",
+          "title": "Invalid Time!",
+          "message": `Please enter the time in minutes from 0 to 60`
+        });
+      }
       
     }
 
@@ -24,7 +33,7 @@ function listenForClicks() {
       browser.tabs.query({active: true, currentWindow: true})
         .then(timer)
         .catch(reportError);
-    }
+    } 
   });
 }
 

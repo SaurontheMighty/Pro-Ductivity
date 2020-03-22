@@ -14,7 +14,8 @@
   "permissions": [
     "activeTab",
     "alarms",
-    "notifications"
+    "notifications",
+    "storage"
   ],
 
   "browser_action": {
@@ -25,6 +26,11 @@
     },
     "default_title": "ProDuctivity",
     "default_popup": "popup/pro.html"
+  },
+
+  "options_ui": {
+    "page": "options/options.html",
+    "browser_style": true
   },
 
   "background": {
