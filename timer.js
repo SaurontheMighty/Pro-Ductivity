@@ -17,16 +17,3 @@ function restartAlarm(tabId, DELAY) {
         })
     });
 }
-/*
-browser.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-    var gettingActiveTab = browser.tabs.query({ active: true, currentWindow: true });
-    gettingActiveTab.then((tabs) => {
-        browser.tabs.executeScript({ file: "/content_scripts/ringring.js" })
-    });
-    browser.notifications.create({
-        "type": "basic",
-        "title": "You changed URLs!",
-        "message": `You cannot hide`
-    });
-});
-*/
