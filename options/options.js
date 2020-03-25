@@ -45,8 +45,10 @@ function listenForClicks() {
 }
 
 function reset(){
-  browser.storage.local.set({tilt: 20});
-  browser.storage.local.set({border: 5});
+  if(!settings.tilt){
+    browser.storage.local.set({tilt: 20});
+    browser.storage.local.set({border: 5});
+  }
 }
 document.addEventListener('DOMContentLoaded', reset);
 listenForClicks();
