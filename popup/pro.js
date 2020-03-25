@@ -33,7 +33,9 @@ function listenForClicks() {
       browser.tabs.query({active: true, currentWindow: true})
         .then(timer)
         .catch(reportError);
-    } 
+    } else if(e.target.classList.contains("settings")){
+      browser.runtime.openOptionsPage();
+    }
   });
 }
 

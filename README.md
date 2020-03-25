@@ -11,6 +11,9 @@ Consists of:
   - The HTML of the popup "pro.html"
   - The CSS of the popup "pro.css"
   - The JavaScript of the popup "pro.js"
+- An options page
+  - The user can customize the tilt of the page when the alarm rings
+  - The user can customize the border around the page when the alarm  rings
   
 ### How it works
 When you click "Set Timer" the extension calls a function in the background script "timer.js" and passes the time set by the user into it. Once this time is up timer.js sends a message to the content script "ringring.js" and asks it to warp the page.
