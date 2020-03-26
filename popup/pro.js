@@ -1,4 +1,5 @@
 var inputtext = document.querySelector("#textBox");
+var hasrung = false;
 
 function listenForClicks() {
   document.addEventListener("click", (e) => {
@@ -35,6 +36,8 @@ function listenForClicks() {
         .catch(reportError);
     } else if(e.target.classList.contains("settings")){
       browser.runtime.openOptionsPage();
+    } else if(e.target.classList.contains("undo")){
+        browser.tabs.executeScript({file: "/content_scripts/undo.js"});
     }
   });
 }

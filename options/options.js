@@ -50,9 +50,13 @@ function listenForClicks() {
 }
 
 function reset(){
-  if(!settings.tilt){
-    browser.storage.local.set({tilt: 20});
-    browser.storage.local.set({border: 5});
+  const gettingStoredSettings = browser.storage.local.get();
+  gettingStoredSettings.then(storeThis);
+  function storeThis(settings){
+    if(!settings.tilt){
+      browser.storage.local.set({tilt: 20});
+      browser.storage.local.set({border: 5});
+    }
   }
 }
 document.addEventListener('DOMContentLoaded', reset);

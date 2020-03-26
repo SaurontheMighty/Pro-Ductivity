@@ -7,22 +7,24 @@ Built with JavaScript, HTML and CSS.
 Consists of:
 - A background script "timer.js"
 - A content script "ringring.js"
+- Another content script "undo.js"
 - A popup
   - The HTML of the popup "pro.html"
   - The CSS of the popup "pro.css"
   - The JavaScript of the popup "pro.js"
 - An options page
-  - The user can customize the tilt of the page when the alarm rings
-  - The user can customize the border around the page when the alarm  rings
+  - The HTML of the options page "options.js"
+  - The CSS of the options page "options.css"
+  - The JavaScript of the options page "options.js"
   
 ### How it works
-When you click "Set Timer" the extension calls a function in the background script "timer.js" and passes the time set by the user into it. Once this time is up timer.js sends a message to the content script "ringring.js" and asks it to warp the page.
+When you click "Set Timer" the extension calls a function in the background script "timer.js" and passes the time set by the user into it. Once this time is up timer.js sends a message to the content script "ringring.js" and asks it to warp the page. If the user presses the "u" in d-->u<--ctivityPRO the extension calls the undo content script and returns the page to normal. The options page is activated by the settings icon in the top right of the popup. This page allows the user to customize the amount of tilt and the width of the border when the alarm rings and the page is warped.
 
 ### Challenges
 This was my first browser extension and it took me a while to get the hang of it. 
  
 ### The Road Ahead
-I plan on putting it on https://addons.mozilla.org/ and making a version for Chrome.
+I plan on putting it on https://addons.mozilla.org/ and making it compatible with Chrome.
 
 ### Helpful Links
 These links are quite useful if you want to build your own extensions:
