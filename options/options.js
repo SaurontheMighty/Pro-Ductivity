@@ -11,7 +11,7 @@ function listenForClicks() {
           browser.notifications.create({
             "type": "basic",
             "title": "Saved Settings!",
-            "message": `Border: ${(settings.tilt)}`
+            "message": `Tilt: ${(settings.tilt)}`
           });
         }
       }
