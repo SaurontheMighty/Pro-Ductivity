@@ -12,6 +12,7 @@
   },
 
   "permissions": [
+    "tabs",
     "activeTab",
     "alarms",
     "notifications",
@@ -34,7 +35,7 @@
   },
 
   "background": {
-    "scripts": ["timer.js"]
+    "scripts": ["timer.js","dp.js"]
   },
 
   "content_scripts": [

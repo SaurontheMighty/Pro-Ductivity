@@ -33,6 +33,24 @@ function listenForClicks() {
       }
     }
 
+    function storeChoice() {
+      const gettingStoredSettings = browser.storage.local.get();
+      gettingStoredSettings.then(hhh);
+      function hhh(settings){
+        if(settings.polymer==false){
+          browser.storage.local.set({polymer: true});
+        }
+        else{
+          browser.storage.local.set({polymer: false});
+        }
+        browser.notifications.create({
+          "type": "basic",
+          "title": "Saved Settings!",
+          "message": ``
+        });
+      }
+    }
+
     function reportError(error) {
       console.error(`Could not perform actions on this page: ${error}`);
     }
@@ -45,6 +63,10 @@ function listenForClicks() {
       browser.tabs.query({active: true, currentWindow: true})
         .then(storeBorder)
         .catch(reportError);
+    } else if (e.target.classList.contains("polymer")) {
+      browser.tabs.query({active: true, currentWindow: true})
+        .then(storeChoice)
+        .catch(reportError);
     } 
   });
 }
@@ -56,6 +78,10 @@ function reset(){
     if(!settings.tilt){
       browser.storage.local.set({tilt: 20});
       browser.storage.local.set({border: 5});
+      browser.storage.local.set({polymer: true});
+    } else if(settings.polymer===false){
+      document.querySelector("#unchecked").classList.add("hidden");
+      document.querySelector("#checked").classList.remove("hidden");
     }
   }
 }

@@ -1,4 +1,3 @@
-
 function restartAlarm(tabId, DELAY) {
     browser.alarms.clearAll();
     var gettingTab = browser.tabs.get(tabId);
