@@ -27,6 +27,13 @@
     if (message.command === "ring") {
       destroy();
     }
+    else if (message.command === "set") {
+      browser.runtime.sendMessage({
+        command: "set2",
+        time: message.time,
+        tab: message.tab
+      });
+    }
   });
 
 })();

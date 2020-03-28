@@ -5,7 +5,6 @@ function listenForClicks() {
   document.addEventListener("click", (e) => {
 
     function timer(tabs) {
-      var page = browser.extension.getBackgroundPage();
       if(0<=parseInt(inputtext.value, 10) && parseInt(inputtext.value, 10)<=60){
         browser.notifications.create({
           "type": "basic",
@@ -14,7 +13,12 @@ function listenForClicks() {
         });
         document.querySelector("#confirmation").classList.remove("hidden");
         var DELAY = inputtext.value;
-        page.restartAlarm(tabs[0].id, DELAY);
+
+        browser.tabs.sendMessage(tabs[0].id, {
+          command: "set",
+          time: DELAY,
+          tab: tabs[0].id
+        });
 
       } else{
         browser.notifications.create({
