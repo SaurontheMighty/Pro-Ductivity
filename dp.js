@@ -15,11 +15,8 @@ browser.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
                 return;
             }
             x=tab.url;
-            
-            if(!x.includes("v") && !x.includes("disable_polymer")){
-                browser.tabs.update({url: x+"?disable_polymer=true"});
-            }
-            else if(x!=x1 && x.includes("watch") && !x.includes("disable_polymer") && x!=x2){
+        
+            if(x!=x1 && x.includes("watch") && !x.includes("disable_polymer") && x!=x2){
                 browser.tabs.update({url: x+"&disable_polymer=true"});
                 x1=x+"&disable_polymer=true";
                 x2=x;
