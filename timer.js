@@ -1,4 +1,4 @@
-function restartAlarm(tabId, DELAY) {
+function startAlarm(tabId, DELAY) {
     browser.alarms.clearAll();
     var gettingTab = browser.tabs.get(tabId);
     const x = parseInt(DELAY, 10);
@@ -17,12 +17,7 @@ function restartAlarm(tabId, DELAY) {
     });
 }
 browser.runtime.onMessage.addListener((message) => {
-    browser.notifications.create({
-        "type": "basic",
-        "title": "Alarm Has Rung",
-        "message": `Heard Message`
-      });
     if (message.command === "set2") {
-      restartAlarm(message.tab, message.time);
+      startAlarm(message.tab, message.time);
     }
 });
