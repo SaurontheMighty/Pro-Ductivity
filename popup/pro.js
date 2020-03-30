@@ -11,7 +11,7 @@ function listenForClicks() {
           "title": "Alarm Cleared!",
           "message": `Any alarm you may have set for this tab has been cleared.`
         });
-        browser.tabs.sendMessage(tabs[0].id, {
+        browser.runtime.sendMessage({
           command: "clear",
           tab: tabs[0].id
         });
@@ -26,7 +26,7 @@ function listenForClicks() {
           document.querySelector("#confirmation").classList.remove("hidden");
           var DELAY = inputtext.value;
   
-          browser.tabs.sendMessage(tabs[0].id, {
+          browser.runtime.sendMessage({
             command: "set",
             time: DELAY,
             tab: tabs[0].id

@@ -24,10 +24,10 @@ function endAlarm(tabId){
     
 }
 browser.runtime.onMessage.addListener((message) => {
-    if (message.command === "set2") {
+    if (message.command === "set") {
       startAlarm(message.tab, message.time);
     }
-    else if(message.command==="clear1"){
+    else if(message.command==="clear"){
         endAlarm(message.tab);
     }
 });
