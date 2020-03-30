@@ -34,6 +34,12 @@
         tab: message.tab
       });
     }
+    else if (message.command === "clear") {
+      browser.runtime.sendMessage({
+        command: "clear1",
+        tab: message.tab
+      });
+    }
   });
 
 })();

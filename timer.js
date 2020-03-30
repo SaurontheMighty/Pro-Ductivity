@@ -16,8 +16,18 @@ function startAlarm(tabId, DELAY) {
         })
     });
 }
+function endAlarm(tabId){
+    var gettingTab = browser.tabs.get(tabId);
+    gettingTab.then((tab) => {
+        browser.alarms.clearAll();
+    });
+    
+}
 browser.runtime.onMessage.addListener((message) => {
     if (message.command === "set2") {
       startAlarm(message.tab, message.time);
+    }
+    else if(message.command==="clear1"){
+        endAlarm(message.tab);
     }
 });

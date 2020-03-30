@@ -5,30 +5,43 @@ function listenForClicks() {
   document.addEventListener("click", (e) => {
 
     function timer(tabs) {
-      if(0<=parseInt(inputtext.value, 10) && parseInt(inputtext.value, 10)<=60){
+      if(!inputtext.value){
         browser.notifications.create({
           "type": "basic",
-          "title": "Alarm created",
-          "message": `Alarm created, ${inputtext.value} minute`
+          "title": "Alarm Cleared!",
+          "message": `Any alarm you may have set for this tab has been cleared.`
         });
-        document.querySelector("#confirmation").classList.remove("hidden");
-        var DELAY = inputtext.value;
-
         browser.tabs.sendMessage(tabs[0].id, {
-          command: "set",
-          time: DELAY,
+          command: "clear",
           tab: tabs[0].id
         });
-
-      } else{
-        browser.notifications.create({
-          "type": "basic",
-          "title": "Invalid Time!",
-          "message": `Please enter the time in minutes from 0 to 60`
-        });
       }
-      
-    }
+      else{
+        if(0<=parseInt(inputtext.value, 10) && parseInt(inputtext.value, 10)<=60){
+          browser.notifications.create({
+            "type": "basic",
+            "title": "Alarm created",
+            "message": `Alarm created, ${inputtext.value} minute`
+          });
+          document.querySelector("#confirmation").classList.remove("hidden");
+          var DELAY = inputtext.value;
+  
+          browser.tabs.sendMessage(tabs[0].id, {
+            command: "set",
+            time: DELAY,
+            tab: tabs[0].id
+          });
+  
+        } else{
+          browser.notifications.create({
+            "type": "basic",
+            "title": "Invalid Time!",
+            "message": `Please enter the time in minutes from 0 to 60`
+          });
+        }
+        
+      }
+      }
 
     function reportError(error) {
       console.error(`Could not perform actions on this page: ${error}`);
