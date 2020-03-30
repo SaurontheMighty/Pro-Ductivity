@@ -1,6 +1,5 @@
 
 (function() {
-
   if (window.hasRun) {
     return;
   }

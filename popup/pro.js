@@ -5,7 +5,7 @@ function listenForClicks() {
   document.addEventListener("click", (e) => {
 
     function timer(tabs) {
-      if(!inputtext.value){
+      if(!inputtext){
         browser.notifications.create({
           "type": "basic",
           "title": "Alarm Cleared!",
@@ -18,11 +18,20 @@ function listenForClicks() {
       }
       else{
         if(0<=parseInt(inputtext.value, 10) && parseInt(inputtext.value, 10)<=60){
-          browser.notifications.create({
-            "type": "basic",
-            "title": "Alarm created",
-            "message": `Alarm created, ${inputtext.value} minute`
-          });
+          if(inputtext.value>1){
+            browser.notifications.create({
+              "type": "basic",
+              "title": "Alarm created",
+              "message": `Alarm created, ${inputtext.value} minutes`
+            });
+          }
+          else{
+            browser.notifications.create({
+              "type": "basic",
+              "title": "Alarm created",
+              "message": `Alarm created, ${inputtext.value} minute`
+            });
+          }
           document.querySelector("#confirmation").classList.remove("hidden");
           var DELAY = inputtext.value;
   
