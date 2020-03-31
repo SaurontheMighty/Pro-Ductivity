@@ -27,7 +27,9 @@ In the options page, the user can also diable polymer, this means that the exten
 This was my first browser extension and it took me a while to get the hang of it. 
  
 ### The Road Ahead
-I plan on putting it on https://addons.mozilla.org/ and making it compatible with Chrome.
+It's on AMO! 
+https://addons.mozilla.org/en-US/firefox/addon/ductivitypro/
+I plan on building a version for Chrome next.
 
 ### Helpful Links
 These links are quite useful if you want to build your own extensions:

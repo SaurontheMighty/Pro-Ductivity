@@ -60,13 +60,17 @@ function listenForClicks() {
       browser.tabs.query({active: true, currentWindow: true})
         .then(timer)
         .catch(reportError);
-    } else if(e.target.classList.contains("settings")){
-      browser.runtime.openOptionsPage();
     } else if(e.target.classList.contains("undo")){
         browser.tabs.executeScript({file: "/content_scripts/undo.js"});
     }
   });
 }
+
+document.addEventListener("click", (e) => { //So that the settings are always accessible
+  if(e.target.classList.contains("settings")){
+    browser.runtime.openOptionsPage();
+  }
+});
 
 function reportExecuteScriptError(error) {
   document.querySelector("#popup-content").classList.add("hidden");
