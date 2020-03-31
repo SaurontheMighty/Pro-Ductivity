@@ -8,8 +8,8 @@ function startAlarm(tabId, DELAY) {
     browser.alarms.onAlarm.addListener((alarm) => {
         browser.notifications.create({
             "type": "basic",
-            "title": "Alarm Has Rung",
-            "message": `Alarm created`
+            "title": "ductivityPRO",
+            "message": `Alarm Has Rung`
           });
         browser.tabs.sendMessage(tabId, {
             command: "ring"
