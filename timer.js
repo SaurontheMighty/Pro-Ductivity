@@ -9,7 +9,7 @@ function startAlarm(tabId, DELAY) {
         browser.notifications.create({
             "type": "basic",
             "title": "Alarm Has Rung",
-            "message": `Alarm created, tab:${(tabId)}`
+            "message": `Alarm created`
           });
         browser.tabs.sendMessage(tabId, {
             command: "ring"
