@@ -1,6 +1,6 @@
 # Pro-Ductivity
 A productivity addon for Firefox.
-Once you install the extension in your browser, you'll notice it's icon in the toolbar. On clicking this, it opens a small window where you can set the time that you want to spend on the tab. Once this time is over,  the extension notifies you, tilts the page and effectively prevents you from spending further time on it. The amount of tilt and the width of the border can be set from the preferences menu acessed by clicking the settings icon in the top right hand corner of the popup. In case something changes and you need to spend more time on it, clicking the "u" in ductivityPRO will revert it without losing any progress made in the page.
+Once you install the extension in your browser, you'll notice it's icon in the toolbar. On clicking this, it opens a small window where you can set the time that you want to spend on the tab. Once this time is over,  the extension notifies you, tilts the page and effectively prevents you from spending further time on it. The amount of tilt and the width of the border can be set from the preferences menu acessed by clicking the settings icon in the top right hand corner of the popup. In case something changes and you need to spend more time on it, clicking the "u" in ductivityPRO will revert it without losing any progress made in the page. The extension also shows you how much time is left in your timer.
 Built with JavaScript, HTML and CSS.
 
 ### The Extension
