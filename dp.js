@@ -15,7 +15,6 @@ browser.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
                 return;
             }
             x=tab.url;
-        
             if(x!=x1 && x.includes("watch") && !x.includes("disable_polymer") && x!=x2){
                 browser.tabs.update({url: x+"&disable_polymer=true"});
                 x1=x+"&disable_polymer=true";

@@ -1,7 +1,36 @@
 var inputtext = document.querySelector("#textBox");
-var hasrung = false;
 
 function listenForClicks() {
+  const gettingStoredSettings = browser.storage.local.get();
+  gettingStoredSettings.then(hhh);
+  function hhh(settings){
+    if(settings.running){
+      if(settings.running == true){
+        browser.tabs.query({active: true, currentWindow: true})
+        .then(getTime);
+      }
+    }
+  }
+  function getTime(tabs){
+    browser.runtime.sendMessage({
+      command: "showTime",
+      tab: tabs[0].id
+    });
+    browser.runtime.onMessage.addListener((message) => {
+      var a = document.querySelector("#timeLeft");
+      if (message.command === "here you go") {
+        if(message.time!=0){
+          a.textContent = message.time+" minutes left";
+        }
+        else{
+          a.textContent = "Timer is about to ring"
+        }
+          
+      }
+      document.querySelector("#confirmation").classList.remove("hidden");
+      document.querySelector("#new").classList.remove("hidden");
+    });
+  }    
   document.addEventListener("click", (e) => {
 
     function timer(tabs) {
@@ -34,7 +63,7 @@ function listenForClicks() {
           }
           document.querySelector("#confirmation").classList.remove("hidden");
           var DELAY = inputtext.value;
-  
+          browser.storage.local.set({running: true});
           browser.runtime.sendMessage({
             command: "set",
             time: DELAY,

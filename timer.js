@@ -21,13 +21,32 @@ function endAlarm(tabId){
     gettingTab.then((tab) => {
         browser.alarms.clearAll();
     });
-    
 }
+function getTime(tabId){
+    var gettingTab = browser.tabs.get(tabId);
+    gettingTab.then((tab) => {
+        var gettingtimer = browser.alarms.get("Timer");
+        gettingtimer.then(calc);
+        function calc(alarm){
+            const now = new Date();  
+            const millisecondsSinceEpoch = now.getTime();
+            var timeLeft = Math.round((alarm.scheduledTime - millisecondsSinceEpoch)/60000);
+            browser.runtime.sendMessage({
+                command: "here you go",
+                time: timeLeft
+            })
+        }
+    });
+}
+
 browser.runtime.onMessage.addListener((message) => {
     if (message.command === "set") {
       startAlarm(message.tab, message.time);
     }
     else if(message.command==="clear"){
         endAlarm(message.tab);
+    }
+    else if(message.command==="showTime"){
+        getTime(message.tab);
     }
 });

@@ -6,6 +6,7 @@
   window.hasRun = true;
 
   function destroy() {
+    browser.storage.local.set({running: false});
     const gettingStoredSettings = browser.storage.local.get();
     gettingStoredSettings.then(checktilt);
     function checktilt(settings) {

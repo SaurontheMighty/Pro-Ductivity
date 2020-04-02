@@ -56,22 +56,12 @@ function listenForClicks() {
       }
     }
 
-    function reportError(error) {
-      console.error(`Could not perform actions on this page: ${error}`);
-    }
-
     if (e.target.classList.contains("tilt")) {
-      browser.tabs.query({active: true, currentWindow: true})
-        .then(storeTilt)
-        .catch(reportError);
+      storeTilt();
     } else if (e.target.classList.contains("border")) {
-      browser.tabs.query({active: true, currentWindow: true})
-        .then(storeBorder)
-        .catch(reportError);
+      storeBorder();
     } else if (e.target.classList.contains("polymer")) {
-      browser.tabs.query({active: true, currentWindow: true})
-        .then(storeChoice)
-        .catch(reportError);
+      storeChoice();
     } 
   });
 }
