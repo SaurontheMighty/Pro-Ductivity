@@ -31,6 +31,7 @@ function listenForClicks() {
       document.querySelector("#old").classList.add("hidden");
       document.querySelector("#new").classList.remove("hidden");
       document.querySelector("#clear").classList.remove("hidden");
+      document.querySelector("#br").classList.remove("hidden");
 
     });
   }    

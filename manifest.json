@@ -3,7 +3,7 @@
   "description": "A productivity extension for Firefox that helps you regulate your time on the internet.",
   "manifest_version": 2,
   "name": "ductivityPRO",
-  "version": "3.2.5",
+  "version": "3.2.6",
   "homepage_url": "https://github.com/sauronthemighty/pro-ductivity",
   "icons": {
     "48": "icons/icon48.png",
