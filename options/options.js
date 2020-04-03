@@ -55,6 +55,28 @@ function listenForClicks() {
         }
       }
     }
+    function storeRemove() {
+      const gettingStoredSettings = browser.storage.local.get();
+      gettingStoredSettings.then(hhh);
+      function hhh(settings){
+        if(settings.remove==false){
+          browser.storage.local.set({remove: true});
+          browser.notifications.create({
+            "type": "basic",
+            "title": "Saved Settings!",
+            "message": `Close Tab: true`
+          });
+        }
+        else{
+          browser.storage.local.set({remove: false});
+          browser.notifications.create({
+            "type": "basic",
+            "title": "Saved Settings!",
+            "message": `Close Tab: false`
+          });
+        }
+      }
+    }
 
     if (e.target.classList.contains("tilt")) {
       storeTilt();
@@ -62,6 +84,9 @@ function listenForClicks() {
       storeBorder();
     } else if (e.target.classList.contains("polymer")) {
       storeChoice();
+    } 
+    else if (e.target.classList.contains("remove")) {
+      storeRemove();
     } 
   });
 }
@@ -74,6 +99,7 @@ function reset(){
       browser.storage.local.set({tilt: 20});
       browser.storage.local.set({border: 5});
       browser.storage.local.set({polymer: true});
+      browser.storage.local.set({remove: false});
     } else if(settings.polymer===false){
       document.querySelector("#unchecked").classList.add("hidden");
       document.querySelector("#checked").classList.remove("hidden");

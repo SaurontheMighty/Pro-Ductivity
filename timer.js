@@ -11,9 +11,19 @@ function startAlarm(tabId, DELAY) {
             "title": "ductivityPRO",
             "message": `Alarm Has Rung`
           });
-        browser.tabs.sendMessage(tabId, {
-            command: "ring"
-        })
+        const gettingStoredSettings = browser.storage.local.get();
+        gettingStoredSettings.then(hhh);
+        function hhh(settings){
+            if(!settings.remove){
+                browser.tabs.sendMessage(tabId, {
+                    command: "ring"
+                })
+            }
+            else if(settings.remove==true){
+                browser.tabs.remove(tabId);
+            }
+        }
+        
     });
 }
 function endAlarm(tabId){
