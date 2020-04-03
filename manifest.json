@@ -1,6 +1,6 @@
 {
 
-  "description": "A productivity addon",
+  "description": "A productivity extension for Firefox that helps you regulate your time on the internet.",
   "manifest_version": 2,
   "name": "ductivityPRO",
   "version": "3.2.0",
