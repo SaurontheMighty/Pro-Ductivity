@@ -49,7 +49,7 @@ function listenForClicks() {
         else{
           browser.notifications.create({
             "type": "basic",
-            "title": "Alarm created",
+            "title": "ductivityPRO",
             "message": `Alarm created, ${inputtext.value} minute`
           });
         }

@@ -103,6 +103,10 @@ function reset(){
     } else if(settings.polymer===false){
       document.querySelector("#unchecked").classList.add("hidden");
       document.querySelector("#checked").classList.remove("hidden");
+    } 
+    if(settings.remove===true){
+      document.querySelector("#unchecked1").classList.add("hidden");
+      document.querySelector("#checked1").classList.remove("hidden");
     }
   }
 }
