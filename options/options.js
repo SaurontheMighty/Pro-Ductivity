@@ -39,19 +39,9 @@ function listenForClicks() {
       function hhh(settings){
         if(settings.polymer==false){
           browser.storage.local.set({polymer: true});
-          browser.notifications.create({
-            "type": "basic",
-            "title": "Saved Settings!",
-            "message": `Polymer: true`
-          });
         }
         else{
           browser.storage.local.set({polymer: false});
-          browser.notifications.create({
-            "type": "basic",
-            "title": "Saved Settings!",
-            "message": `Polymer: false`
-          });
         }
       }
     }
@@ -61,19 +51,9 @@ function listenForClicks() {
       function hhh(settings){
         if(settings.remove==false){
           browser.storage.local.set({remove: true});
-          browser.notifications.create({
-            "type": "basic",
-            "title": "Saved Settings!",
-            "message": `Close Tab: true`
-          });
         }
         else{
           browser.storage.local.set({remove: false});
-          browser.notifications.create({
-            "type": "basic",
-            "title": "Saved Settings!",
-            "message": `Close Tab: false`
-          });
         }
       }
     }

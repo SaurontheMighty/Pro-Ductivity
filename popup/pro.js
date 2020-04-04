@@ -42,7 +42,7 @@ function listenForClicks() {
         if(inputtext.value>1){
           browser.notifications.create({
             "type": "basic",
-            "title": "Alarm created",
+            "title": "ductivityPRO",
             "message": `Alarm created, ${inputtext.value} minutes`
           });
         }
