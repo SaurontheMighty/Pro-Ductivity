@@ -11,7 +11,7 @@ function listenForClicks() {
           browser.notifications.create({
             "type": "basic",
             "title": "Saved Settings!",
-            "message": `Tilt: ${(settings.tilt)}`
+            "message": `Tilt: ${(settings.tilt)} degrees`
           });
         }
       }
@@ -27,7 +27,7 @@ function listenForClicks() {
           browser.notifications.create({
             "type": "basic",
             "title": "Saved Settings!",
-            "message": `Border: ${(settings.border)}`
+            "message": `Border: ${(settings.border)} px`
           });
         }
       }
@@ -39,9 +39,19 @@ function listenForClicks() {
       function hhh(settings){
         if(settings.polymer==false){
           browser.storage.local.set({polymer: true});
+          browser.notifications.create({
+            "type": "basic",
+            "title": "Saved Settings!",
+            "message": `Polymer will now be enabled.`
+          });
         }
         else{
           browser.storage.local.set({polymer: false});
+          browser.notifications.create({
+            "type": "basic",
+            "title": "Saved Settings!",
+            "message": `Polymer will now be disabled.`
+          });
         }
       }
     }
@@ -51,9 +61,19 @@ function listenForClicks() {
       function hhh(settings){
         if(settings.remove==false){
           browser.storage.local.set({remove: true});
+          browser.notifications.create({
+            "type": "basic",
+            "title": "Saved Settings!",
+            "message": `Tabs will be closed on Alarm ring.`
+          });
         }
         else{
           browser.storage.local.set({remove: false});
+          browser.notifications.create({
+            "type": "basic",
+            "title": "Saved Settings!",
+            "message": `Tabs will not be closed on Alarm ring.`
+          });
         }
       }
     }
