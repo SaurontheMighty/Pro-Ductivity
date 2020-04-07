@@ -1,0 +1,45 @@
+{
+
+  "description": "A productivity extension for Chrome that helps you regulate your time on the internet.",
+  "manifest_version": 2,
+  "name": "ductivityPRO",
+  "version": "1.0.1",
+  "homepage_url": "https://github.com/sauronthemighty/pro-ductivity",
+  "icons": {
+    "48": "icons/icon48.png",
+    "84": "icons/icon.png",
+    "96": "icons/icon96.png"
+  },
+
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "alarms",
+    "notifications",
+    "storage"
+  ],
+
+  "browser_action": {
+    "default_icon": {
+      "48": "icons/icon48.png",
+      "64": "icons/icon.png",
+      "96": "icons/icon96.png"
+    },
+    "default_title": "ProDuctivity",
+    "default_popup": "popup/pro.html"
+  },
+
+  "options_page": "options/options.html",
+
+  "background": {
+    "scripts": ["timer.js","dp.js"]
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["/content_scripts/r2.js"]
+    }
+  ]
+
+}

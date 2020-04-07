@@ -1,0 +1,12 @@
+body {background-color: #feffe4;}
+h1 {font: serif; color: #b50000; font-size: 30px;}
+.hidden {display: none;}
+.button {
+    margin: 3% auto;
+    padding: 4px;
+    text-align: center;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #fff;
+    background-color: #b50000;
+  }
