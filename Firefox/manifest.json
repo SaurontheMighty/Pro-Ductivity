@@ -1,0 +1,48 @@
+{
+
+  "description": "A productivity extension for Firefox that helps you regulate your time on the internet.",
+  "manifest_version": 2,
+  "name": "ductivityPRO",
+  "version": "4.1.1",
+  "homepage_url": "https://github.com/sauronthemighty/pro-ductivity",
+  "icons": {
+    "48": "icons/icon48.png",
+    "84": "icons/icon.png",
+    "96": "icons/icon96.png"
+  },
+
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "alarms",
+    "notifications",
+    "storage"
+  ],
+
+  "browser_action": {
+    "default_icon": {
+      "48": "icons/icon48.png",
+      "64": "icons/icon.png",
+      "96": "icons/icon96.png"
+    },
+    "default_title": "ProDuctivity",
+    "default_popup": "popup/pro.html"
+  },
+
+  "options_ui": {
+    "page": "options/options.html",
+    "browser_style": true
+  },
+
+  "background": {
+    "scripts": ["timer.js","dp.js"]
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["/content_scripts/ringring.js"]
+    }
+  ]
+
+}
