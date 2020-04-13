@@ -93,23 +93,26 @@ function listenForClicks() {
 }
 
 function reset(){
-  settings=chrome.storage.local.get();
-  storeThis(settings);
-  function storeThis(settings){
+  settings=chrome.storage.local.get('tilt', function(settings){
     if(!settings.tilt){
       chrome.storage.local.set({tilt: 20});
       chrome.storage.local.set({border: 5});
       chrome.storage.local.set({polymer: true});
       chrome.storage.local.set({remove: false});
-    } else if(settings.polymer===false){
+    }
+  });
+  settings=chrome.storage.local.get('polymer', function(settings){
+    if(settings.polymer===false){
       document.querySelector("#unchecked").classList.add("hidden");
       document.querySelector("#checked").classList.remove("hidden");
-    } 
+    }
+  });
+  settings=chrome.storage.local.get('remove', function(settings){
     if(settings.remove===true){
       document.querySelector("#unchecked1").classList.add("hidden");
       document.querySelector("#checked1").classList.remove("hidden");
     }
-  }
+  });
 }
 document.addEventListener('DOMContentLoaded', reset);
 listenForClicks();

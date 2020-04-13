@@ -29,7 +29,9 @@ function startAlarm(tabId, DELAY) {
       });
 }
 function endAlarm(tabId){
-    
+    chrome.tabs.get(tabId, function (result){
+        chrome.alarms.clear("Timer");
+    });
 }
 function getTime(tabId){
     chrome.tabs.get(tabId, function (result){
