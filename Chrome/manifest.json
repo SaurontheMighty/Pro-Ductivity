@@ -19,6 +19,8 @@
     "storage"
   ],
 
+  "incognito": "split",
+
   "browser_action": {
     "default_icon": {
       "48": "icons/icon48.png",
@@ -38,7 +40,7 @@
   "content_scripts": [
     {
       "matches": ["*://*/*"],
-      "js": ["/content_scripts/r2.js"]
+      "js": ["/content_scripts/ringring.js"]
     }
   ]
 

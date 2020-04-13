@@ -1,40 +1,37 @@
 var inputtext = document.querySelector("#textBox");
 
+
 function listenForClicks() {
   chrome.storage.local.get('running', function (result) {
-    if(result.running){
-      if(result.running == true){
-        chrome.tabs.query({'active': true}, function(tabs) {
-          getTime(tabs);
+    console.log('1');
+    if(result.running === "true"){
+      console.log('2');
+      chrome.tabs.query({'active': true}, function(tabs) {
+        chrome.runtime.sendMessage({
+          command: "showTime",
+          tab: tabs[0].id
         });
-      }
-    }
-  });
-    
-  function getTime(tabs){
-    chrome.runtime.sendMessage({
-      command: "showTime",
-      tab: tabs[0].id
-    });
-    chrome.runtime.onMessage.addListener((message) => {
-      var a = document.querySelector("#timeLeft");
-      if (message.command === "here you go") {
-        if(message.time!=0){
-          a.textContent = message.time+" minutes left";
+      });
+      chrome.runtime.onMessage.addListener((message) => {
+        var a = document.querySelector("#timeLeft");
+        if (message.command === "here you go") {
+          console.log('4');
+          if(message.time!=0){
+            a.textContent = message.time+" minutes left";
+          }
+          else{
+            a.textContent = "Timer is about to ring"
+          }
+            
         }
-        else{
-          a.textContent = "Timer is about to ring"
-        }
-          
-      }
+      });
       document.querySelector("#confirmation").classList.remove("hidden");
       document.querySelector("#old").classList.add("hidden");
       document.querySelector("#new").classList.remove("hidden");
       document.querySelector("#clear").classList.remove("hidden");
       document.querySelector("#br").classList.remove("hidden");
-
-    });
-  }    
+    }
+  }); 
 
   document.addEventListener("click", (e) => {
     function timer(tabs) {
@@ -104,5 +101,5 @@ document.addEventListener("click", (e) => {
   }
 });
 
-chrome.tabs.executeScript({file: "/content_scripts/r2.js"})
+chrome.tabs.executeScript({file: "/content_scripts/ringring.js"})
 listenForClicks();

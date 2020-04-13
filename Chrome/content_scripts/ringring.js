@@ -7,20 +7,24 @@
 
   function destroy() {
     chrome.storage.local.set({running: false});
-    const gettingStoredSettings = chrome.storage.local.get();
-    gettingStoredSettings.then(checktilt);
-    function checktilt(settings) {
-      if(!settings.tilt){
+    chrome.storage.local.get('tilt',function(result){
+      if(!result.tilt){
+        document.body.style.transform="rotate(20deg)";
+      }
+      else{
+        document.body.style.transform="rotate("+result.tilt+"deg)";
+      }
+    });
+    chrome.storage.local.get('border',function(result){
+      if(!result.border){
         document.body.style.border = "5px solid red";
-        document.body.style.MozTransform="rotate(20deg)";
         document.exitFullscreen();
       }
       else{
-        document.body.style.border = settings.border+"px solid red";
-        document.body.style.MozTransform="rotate("+settings.tilt+"deg)";
+        document.body.style.border = result.border+"px solid red";
         document.exitFullscreen();
       }
-    }
+    });
   }
 
   chrome.runtime.onMessage.addListener((message) => {

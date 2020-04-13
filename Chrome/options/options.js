@@ -4,14 +4,16 @@ function listenForClicks() {
     function storeTilt() {
       a=document.querySelector("#tiltBox").value;
       if(-360<=parseInt(a,10) && parseInt(a,10)<=360){
-        chrome.storage.local.set({tilt: document.querySelector("#tiltBox").value});
+        chrome.storage.local.set({tilt: a});
         chrome.storage.local.get('tilt', function (result) {
-          tilt = result.tilt;
-          chrome.notifications.create({
-            "type": "basic",
-            "title": "Saved Settings!",
-            "message": `Tilt: ${(tilt)} degrees`
-          });
+          var opt = {
+            type: 'basic',
+            iconUrl: "/icons/icon.png",
+            title: 'ductivityPRO',
+            message: 'Saved Settings',
+            priority: 1
+          };
+        chrome.notifications.create('', opt);
         });
       }
     } 

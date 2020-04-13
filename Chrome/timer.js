@@ -32,19 +32,16 @@ function endAlarm(tabId){
     
 }
 function getTime(tabId){
-    var gettingTab = chrome.tabs.get(tabId);
-    gettingTab.then((tab) => {
-        var gettingtimer = chrome.alarms.get("Timer");
-        gettingtimer.then(calc);
-        function calc(alarm){
+    chrome.tabs.get(tabId, function (result){
+        chrome.alarms.get("Timer",function(resultt){
             const now = new Date();  
             const millisecondsSinceEpoch = now.getTime();
-            var timeLeft = Math.round((alarm.scheduledTime - millisecondsSinceEpoch)/60000);
+            var timeLeft = Math.round((resultt.scheduledTime - millisecondsSinceEpoch)/60000);
             chrome.runtime.sendMessage({
                 command: "here you go",
                 time: timeLeft
             })
-        }
+        });
     });
 }
 
