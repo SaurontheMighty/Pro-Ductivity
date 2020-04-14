@@ -35,48 +35,57 @@ function listenForClicks() {
     }
 
     function storeChoice() {
-      settings=chrome.storage.local.get();
-      storeThis(settings);      f
-      function hhh(settings){
+      chrome.storage.local.get('polymer', function (settings) {
         if(settings.polymer==false){
           chrome.storage.local.set({polymer: true});
-          chrome.notifications.create({
-            "type": "basic",
-            "title": "Saved Settings!",
-            "message": `Polymer will now be enabled.`
-          });
+          var opt = {
+            type: 'basic',
+            iconUrl: "/icons/icon.png",
+            title: 'ductivityPRO',
+            message: 'Polymer will not be disabled.',
+            priority: 1
+          };
+          chrome.notifications.create('', opt);
         }
         else{
           chrome.storage.local.set({polymer: false});
-          chrome.notifications.create({
-            "type": "basic",
-            "title": "Saved Settings!",
-            "message": `Polymer will now be disabled.`
-          });
+          var opt = {
+            type: 'basic',
+            iconUrl: "/icons/icon.png",
+            title: 'ductivityPRO',
+            message: 'Polymer will now be disabled.',
+            priority: 1
+          };
+          chrome.notifications.create('', opt);
         }
-      }
+      });
     }
+
     function storeRemove() {
-      settings=chrome.storage.local.get();
-      storeThis(settings);
-      function hhh(settings){
+      chrome.storage.local.get('remove', function (settings) {
         if(settings.remove==false){
           chrome.storage.local.set({remove: true});
-          chrome.notifications.create({
-            "type": "basic",
-            "title": "Saved Settings!",
-            "message": `Tabs will be closed on Alarm ring.`
-          });
+          var opt = {
+            type: 'basic',
+            iconUrl: "/icons/icon.png",
+            title: 'ductivityPRO',
+            message: 'Tabs will now be removed on alarm ring.',
+            priority: 1
+          };
+          chrome.notifications.create('', opt);
         }
         else{
           chrome.storage.local.set({remove: false});
-          chrome.notifications.create({
-            "type": "basic",
-            "title": "Saved Settings!",
-            "message": `Tabs will not be closed on Alarm ring.`
-          });
+          var opt = {
+            type: 'basic',
+            iconUrl: "/icons/icon.png",
+            title: 'ductivityPRO',
+            message: 'Tabs will not be removed on alarm ring.',
+            priority: 1
+          };
+          chrome.notifications.create('', opt);
         }
-      }
+      });
     }
 
     if (e.target.classList.contains("tilt")) {
@@ -85,8 +94,7 @@ function listenForClicks() {
       storeBorder();
     } else if (e.target.classList.contains("polymer")) {
       storeChoice();
-    } 
-    else if (e.target.classList.contains("remove")) {
+    } else if (e.target.classList.contains("remove")) {
       storeRemove();
     } 
   });

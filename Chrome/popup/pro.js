@@ -1,11 +1,9 @@
 var inputtext = document.querySelector("#textBox");
-console.log("test");
 
 function listenForClicks() {
   chrome.storage.local.get('running', function (result) {
     console.log(1);
     if(result.running === true){
-      console.log('2');
       chrome.tabs.query({'active': true}, function(tabs) {
         chrome.runtime.sendMessage({
           command: "showTime",
@@ -15,10 +13,8 @@ function listenForClicks() {
       chrome.runtime.onMessage.addListener((message) => {
         var a = document.querySelector("#timeLeft");
         if (message.command === "here you go") {
-          console.log('3');
           if(message.time!=0){
             a.textContent = message.time+" minutes left";
-            console.log('4');
           }
           else{
             a.textContent = "Timer is about to ring"

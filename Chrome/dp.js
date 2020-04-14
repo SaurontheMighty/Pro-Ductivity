@@ -6,20 +6,20 @@ const filter = {
 }
 var x1="";
 var x2="";
-chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-    const gettingStoredSettings = chrome.storage.local.get();
-    gettingStoredSettings.then(checktilt);
-    function checktilt(settings) {
-        if(settings.polymer==false){
+
+chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
+    chrome.storage.local.get('polymer', function (settings) {
+        console.log('22');
+        if(settings.polymer===false){
             if(!changeInfo.url){
                 return;
             }
             x=tab.url;
             if(x!=x1 && x.includes("watch") && !x.includes("disable_polymer") && x!=x2){
-                chrome.tabs.update({url: x+"&disable_polymer=true"});
+                chrome.tabs.update(null, {url: x+"&disable_polymer=true"});
                 x1=x+"&disable_polymer=true";
                 x2=x;
             }
         }
-    }
-}, filter);
+    });
+},filter);     
