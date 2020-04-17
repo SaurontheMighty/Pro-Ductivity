@@ -1,10 +1,11 @@
+//© 2020 Ashish Selvaraj
 
 (function() {
   if (window.hasRun) {
     return;
   }
   window.hasRun = true;
-
+  
   function destroy() {
     chrome.storage.local.set({running: false});
     chrome.storage.local.get('tilt',function(result){

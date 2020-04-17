@@ -1,4 +1,4 @@
-body {background-color: #feffeb;}
+body {background-color: #fffeeb;}
 h1 {font: serif; color: #b50000; font-size: 30px;}
 .hidden {display: none;}
 .button {
@@ -9,4 +9,4 @@ h1 {font: serif; color: #b50000; font-size: 30px;}
     cursor: pointer;
     color: #fff;
     background-color: #b50000;
-  }
+}

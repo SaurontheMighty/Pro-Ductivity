@@ -10,14 +10,23 @@ function listenForClicks() {
           tab: tabs[0].id
         });
       });
+      var a = document.querySelector("#timeLeft");
       chrome.runtime.onMessage.addListener((message) => {
-        var a = document.querySelector("#timeLeft");
         if (message.command === "here you go") {
           if(message.time!=0){
             a.textContent = message.time+" minutes left";
           }
-          else{
+          else if(message.time==0){
             a.textContent = "Timer is about to ring"
+          }
+            
+        }
+        if (message.command === "here you go1") {
+          if(message.time!=0){
+            a.textContent = "Timer is running in another tab: "+message.time+" minutes left";
+          }
+          else if(message.time==0){
+            a.textContent = "Timer is running in another tab: about to ring"
           }
             
         }
@@ -37,7 +46,7 @@ function listenForClicks() {
           type: 'basic',
           iconUrl: "/icons/icon.png",
           title: 'ductivityPRO',
-          message: 'Timer set!',
+          message: `Timer set!`,
           priority: 1
         };
       chrome.notifications.create('', opt);
@@ -78,17 +87,16 @@ function listenForClicks() {
     }
 
     if (e.target.classList.contains("timer")) {
-      chrome.tabs.query({'active': true}, function(tabs) {
+      chrome.tabs.query({active: true, currentWindow: true},function(tabs){
         timer(tabs);
       });
     } else if(e.target.classList.contains("undo")){
         chrome.tabs.executeScript({file: "/content_scripts/undo.js"});
     } else if(e.target.classList.contains("clear")){
-      chrome.tabs.query({'active': true}, function(tabs) {
+      browser.tabs.query({active: true, currentWindow: true},function(tabs){
         clearTimer(tabs);
       });
     }
-
   });
 }
 
@@ -98,5 +106,15 @@ document.addEventListener("click", (e) => {
   }
 });
 
-chrome.tabs.executeScript({file: "/content_scripts/ringring.js"})
-listenForClicks();
+function reportExecuteScriptError(error) {
+  document.querySelector("#popup-content").classList.add("hidden");
+  document.querySelector("#error-content").classList.remove("hidden");
+}
+chrome.tabs.executeScript({file: "/content_scripts/ringring.js"}, function(result){
+if(result){
+  listenForClicks();
+}
+else{
+  reportExecuteScriptError();
+}
+});

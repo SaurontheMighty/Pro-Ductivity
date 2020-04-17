@@ -10,7 +10,7 @@ function listenForClicks() {
             type: 'basic',
             iconUrl: "/icons/icon.png",
             title: 'ductivityPRO',
-            message: 'Saved Settings',
+            message: `Saved Settings: Tilt is ${(a)} degrees`,
             priority: 1
           };
         chrome.notifications.create('', opt);
@@ -22,15 +22,16 @@ function listenForClicks() {
       a=document.querySelector("#borderBox").value;
       if(0<=parseInt(a,10) && parseInt(a,10)<=500){
         chrome.storage.local.set({border: document.querySelector("#borderBox").value});
-        const gettingStoredSettings = chrome.storage.local.get();
-        gettingStoredSettings.then(hhh);
-        function hhh(settings){
-          chrome.notifications.create({
-            "type": "basic",
-            "title": "Saved Settings!",
-            "message": `Border: ${(settings.border)} px`
-          });
-        }
+        chrome.storage.local.get('tilt', function (result) {
+          var opt = {
+            type: 'basic',
+            iconUrl: "/icons/icon.png",
+            title: 'ductivityPRO',
+            message: `Saved Settings: Border is ${(a)} px`,
+            priority: 1
+          };
+        chrome.notifications.create('', opt);
+        });
       }
     }
 
